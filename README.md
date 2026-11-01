@@ -1,9 +1,10 @@
-# Traveling Salesman Challenge
+# Bank Branch Simulation
 
-A Streamlit app for visualizing custom TSP solutions on the included benchmark
-instances. The solver uses multi-start nearest-neighbor and greedy insertion,
-followed by 2-opt local search; it does not use an external optimization
-library.
+This project simulates a bank branch with a single shared queue and two tellers.
+Customers arrive on an exponential schedule with an average inter-arrival time of
+3 minutes, and each teller serves customers with an exponential service time
+average of 4 minutes. The app runs a Monte Carlo-style simulation and reports
+average wait, worst wait, 95th percentile wait, and teller utilization.
 
 ## Run locally
 
@@ -14,9 +15,15 @@ python -m streamlit run app.py
 
 ## Deploy on Streamlit Community Cloud
 
-1. Push this project to a GitHub repository. The `.gitignore` excludes the
-   session slide PDFs, notebook, and local environment.
-2. In [Streamlit Community Cloud](https://share.streamlit.io), choose **Create
-   app**, select the repository and branch, and set the main file path to
+1. Sign in to [Streamlit Community Cloud](https://share.streamlit.io) with GitHub.
+2. Choose **Create app**, select this repository and the
+   `deploy/bank-branch-simulation` branch, and set the main file path to
    `app.py`.
-3. Deploy. The benchmark datasets in `tsp_data/` must remain in the repository.
+3. Deploy. Streamlit installs the dependencies from `requirements.txt`.
+
+## What the app shows
+
+- Your pre-run guess for average wait time
+- A Monte Carlo simulation of the queueing system
+- A wait-time histogram for the simulated customers
+- Summary metrics for the branch performance
